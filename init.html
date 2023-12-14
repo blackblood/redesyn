@@ -1,0 +1,15 @@
+<html>
+  <head>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        const evtSource = new EventSource('http://localhost:8001/monitor_logs')
+        evtSource.addEventListener('log_gen', function(event) {
+          document.querySelector('#logs').innerHTML += ("<br/>" + event["data"])
+        })
+      })
+    </script>
+  </head>
+  <body>
+    <div id="logs">@log_lines</div>
+  </body>
+</html>
